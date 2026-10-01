@@ -1,13 +1,114 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>proyecto-web</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pirotecnia A.J</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: { bosque: '#1F3D36', salvia: '#DDE6DA', azafran: '#E8A317', tinta: '#16211E' },
+        fontFamily: { display: ['Fraunces', 'Georgia', 'serif'], body: ['Inter', 'system-ui', 'sans-serif'] }
+      } }
+    }
+  </script>
+</head>
+<body class="font-body bg-salvia text-tinta antialiased">
+
+  <!-- 1. HEADER -->
+  <header class="bg-bosque text-white">
+    <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
+      <a href="#" class="font-display font-extrabold text-xl tracking-tight">Pirotecnia A.J</a>
+      <nav aria-label="Principal" class="flex gap-5 text-sm">
+        <a href="#productos" class="hover:text-azafran focus:outline-none focus-visible:ring-2 focus-visible:ring-azafran rounded">Productos</a>
+        <a href="#contacto" class="hover:text-azafran focus:outline-none focus-visible:ring-2 focus-visible:ring-azafran rounded">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- 2. HERO -->
+    <section class="bg-bosque text-white">
+      <div class="max-w-6xl mx-auto px-5 py-16 md:py-28">
+        <h1 class="font-display font-extrabold text-4xl md:text-6xl leading-tight max-w-3xl">Efectos espectaculares, diseñados para hacer vibrar el cielo.</h1>
+        <p class="mt-5 text-lg text-white/80 max-w-xl">Trabajamos con marcas reconocidas como el Vaquero, Pirotecnia de Colombia, Mariposa, el Condor, empresas que garantizan tú seguridad.</p>
+        <a href="#productos" class="mt-8 inline-block bg-azafran text-tinta font-semibold px-6 py-3 rounded-lg hover:brightness-110 focus:outline-none focus-visible:ring-4 focus-visible:ring-white/60">Ver Productos</a>
+      </div>
+    </section>
+
+    <!-- 3. GRID DE CARDS -->
+    <section id="productos" class="max-w-6xl mx-auto px-5 py-16">
+      <h2 class="font-display font-semibold text-3xl mb-8">Productos de Temporada</h2>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <article class="bg-white rounded-xl p-6 flex flex-col">
+          <img src="src/assets/silvador.jpeg" alt="Cohete Silvador" class="h-32 w-full object-cover rounded-lg mb-4">
+          <h3 class="font-display font-semibold text-xl">Minicohete Silvador</h3>
+          <p class="mt-2 text-sm text-tinta/70 grow">Pirotecnia aérea de rápido ascenso con silbido agudo característico y estallido final.</p>
+          <p class="mt-4 flex items-center justify-between"><span class="font-semibold">$60.000</span><a href="#contacto" class="text-bosque font-semibold underline underline-offset-4">Pedir Ahora</a></p>
+        </article>
+        <article class="bg-white rounded-xl p-6 flex flex-col">
+          <img src="src/assets/ufos.jpeg" alt="UFOS Voladores" class="h-32 w-full object-cover rounded-lg mb-4">
+          <h3 class="font-display font-semibold text-xl">UFO Volador</h3>
+          <p class="mt-2 text-sm text-tinta/70 grow">Producto giratorio de despegue vertical. Eleva su vuelo con un brillante espiral de luces.</p>
+          <p class="mt-4 flex items-center justify-between"><span class="font-semibold">$36.000</span><a href="#contacto" class="text-bosque font-semibold underline underline-offset-4">Pedir Ahora</a></p>
+        </article>
+        <article class="bg-white rounded-xl p-6 flex flex-col sm:col-span-2 lg:col-span-1">
+          <img src="src/assets/volcan.jpeg" alt="Volcán Importado '7'" class="h-32 w-full object-cover rounded-lg mb-4">
+          <h3 class="font-display font-semibold text-xl">Volcán Importado "7"</h3>
+          <p class="mt-2 text-sm text-tinta/70 grow">Fuente terrestre de alta potencia. Emite una intensa cascada de chispas brillantes.</p>
+          <p class="mt-4 flex items-center justify-between"><span class="font-semibold">$100.000</span><a href="#contacto" class="text-bosque font-semibold underline underline-offset-4">Pedir Ahora</a></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 4. FORMULARIO -->
+    <section id="contacto" class="bg-white">
+      <div class="max-w-xl mx-auto px-5 py-16">
+        <h2 class="font-display font-semibold text-3xl">Haz tu pedido</h2>
+        <p class="mt-2 text-tinta/70">Escríbenos y te respondemos en un día hábil.</p>
+        <form class="mt-8 space-y-5" onsubmit="event.preventDefault(); this.querySelector('output').textContent='Mensaje enviado. Te escribimos pronto.'">
+          <div>
+            <label for="nombre" class="block text-sm font-medium mb-1">Nombre</label>
+            <input id="nombre" type="text" required class="w-full rounded-lg border border-tinta/25 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-bosque focus:border-bosque">
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium mb-1">Correo</label>
+            <input id="email" type="email" required class="w-full rounded-lg border border-tinta/25 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-bosque focus:border-bosque">
+          </div>
+          <div>
+            <label for="mensaje" class="block text-sm font-medium mb-1">Mensaje</label>
+            <textarea id="mensaje" rows="4" required class="w-full rounded-lg border border-tinta/25 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-bosque focus:border-bosque"></textarea>
+          </div>
+          <button type="submit" class="w-full sm:w-auto bg-bosque text-white font-semibold px-6 py-3 rounded-lg hover:bg-tinta focus:outline-none focus-visible:ring-4 focus-visible:ring-azafran">Enviar mensaje</button>
+          <output class="block text-sm font-medium text-bosque" aria-live="polite"></output>
+        </form>
+      </div>
+    </section>
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+  <a href="https://wa.me/573108473160?text=Hola%2C%20quiero%20hacer%20un%20pedido"
+   target="_blank" rel="noopener noreferrer"
+   aria-label="Contáctanos por WhatsApp"
+   class="fixed bottom-5 right-5 z-50 flex items-center gap-2 bg-[#25D366] text-white font-semibold pl-4 pr-5 py-3 rounded-full shadow-lg hover:brightness-110 focus:outline-none focus-visible:ring-4 focus-visible:ring-white/70">
+  <svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6" aria-hidden="true">
+    <path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/>
+  </svg>
+  <span>Contáctanos</span>
+</a>
+  </main>
+
+  <!-- 5. FOOTER -->
+  <footer class="bg-tinta text-white/80">
+    <div class="max-w-6xl mx-auto px-5 py-8 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between text-sm">
+      <nav aria-label="Pie de página" class="flex gap-5">
+        <a href="#productos" class="hover:text-azafran">Productos</a>
+        <a href="#contacto" class="hover:text-azafran">Contacto</a>
+        <a href="#" class="hover:text-azafran">Privacidad</a>
+      </nav>
+      <p>© 2026 Todos los derechos reservados A.J.</p>
+    </div>
+  </footer>
+</body>
 </html>
